@@ -1,16 +1,17 @@
 plugins {
-    alias(libs.plugins.com.android.application)
-    alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+//    alias(libs.plugins.compose.compiler)
 }
 
 android {
     namespace = "com.phenix.bluetoothchat"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.phenix.bluetoothchat"
-        minSdk = 24
-        targetSdk = 34
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -44,18 +45,22 @@ android {
         shaders = false
         viewBinding = true
     }
+    packaging {
+        resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+    }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.core.splashscreen)
-    implementation(libs.androidx.core.google.shortcuts)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    implementation(libs.core.ktx)
+    implementation(libs.core.splashscreen)
+    implementation(libs.core.google.shortcuts)
+    implementation(libs.lifecycle.runtime.ktx)
+//    implementation(libs.compose.compiler)
+//    implementation(libs.appcompat)
+    implementation(libs.google.material)
     implementation(libs.constraintlayout)
-    implementation(libs.startup.runtime)
+//    implementation(libs.startup.runtime)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
