@@ -8,12 +8,12 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
- * RoutingActivity
+ * LauncherActivity
  *
  * @author john
  * @since 2023-09-01
  */
-class RoutingActivity : BaseActivity() {
+class LauncherActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -23,8 +23,8 @@ class RoutingActivity : BaseActivity() {
 
         lifecycleScope.launch(Dispatchers.Main) {
             delay(1000)
-            MainActivity.start(this@RoutingActivity)
-            this@RoutingActivity.finish()
+            MainActivity.start(this@LauncherActivity)
+            this@LauncherActivity.finish()
         }
     }
 }

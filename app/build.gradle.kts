@@ -48,6 +48,16 @@ android {
     packaging {
         resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
+
+    lint {
+        disable.addAll(arrayOf("NotifyDataSetChanged", "MissingPermission"))
+        // enable += "RtlHardcoded" + "RtlCompat" + "RtlEnabled"
+        // checkOnly += "NewApi" + "InlinedApi"
+        // quiet = true
+        // abortOnError = false
+        // ignoreWarnings = true
+        // checkDependencies = true
+    }
 }
 
 dependencies {
@@ -55,10 +65,13 @@ dependencies {
     implementation(libs.core.splashscreen)
     implementation(libs.core.google.shortcuts)
     implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.gson)
 //    implementation(libs.compose.compiler)
 //    implementation(libs.appcompat)
     implementation(libs.google.material)
     implementation(libs.constraintlayout)
+    implementation(libs.appcompat)
+    implementation(libs.activity)
 //    implementation(libs.startup.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
